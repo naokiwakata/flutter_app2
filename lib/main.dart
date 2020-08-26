@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app2/book_list_page.dart';
 import 'package:flutter_app2/main_model.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         create: (_) => MainModel(),
         child: Scaffold(
           appBar: AppBar(
-            title: Text('バナナ'),
+            title: Text('vababa'),
           ),
           body:  Consumer<MainModel>(builder: (context, model,child) {
               return Center(
@@ -30,7 +31,10 @@ class MyApp extends StatelessWidget {
                     RaisedButton(
                       child: Text('button'),
                       onPressed: (){
-                          model.changeBananaText();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BookListPage()),
+                        );
                       },
                     )
                   ],
