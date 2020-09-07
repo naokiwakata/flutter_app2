@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_app2/book_list_model.dart';
+import 'package:flutter_app2/add_book_page.dart';
+import 'file:///C:/Users/rockw/AndroidStudioProjects/flutter_app2/lib/book_list_model.dart';
 import 'package:provider/provider.dart';
 
 class BookListPage extends StatelessWidget {
@@ -27,7 +28,23 @@ class BookListPage extends StatelessWidget {
               );
           },
         ),
+        floatingActionButton: Consumer<BookListModel>(
+            builder: (context, model,child) {
+            return FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddBookPage(),
+                  fullscreenDialog: true,
+                  ),
+                );
+                model.fetchBooks();
+              },
+            );
+          }
+        ),
       ),
     );
   }
-}=
+}
