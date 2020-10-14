@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_app2/book.dart';
 
-class BookListModel extends ChangeNotifier{
+class BookListModel extends ChangeNotifier {
   List<Book> books = [];
 
   Future fetchBooks() async {
@@ -10,5 +10,5 @@ class BookListModel extends ChangeNotifier{
     final books = docs.documents.map((doc) => Book(doc['title'])).toList();
     this.books = books;
     notifyListeners();
-}
+  }
 }

@@ -4,9 +4,8 @@ import 'package:flutter_app2/book_list_page.dart';
 import 'package:flutter_app2/main_model.dart';
 
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
 
   @override

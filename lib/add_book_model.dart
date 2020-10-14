@@ -1,18 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
-class AddBookModel extends ChangeNotifier{
-  String bookTitle = "";
+import 'book.dart';
 
-  Future addBookToFirebase()async{
-    if(bookTitle.isEmpty){
-      throw('タイトル入力せえや');
-    }
-    Firestore.instance.collection('books').add(
-        {
-          'title':bookTitle,
-          'createdAt':Timestamp.now(),
-        },
-    );
+
+class BookListModel extends ChangeNotifier {
+  List<Book> books = [];
+
+  Future fetchBooks() async {
+    final docs = await Firestore.instance.collection('books').getDocuments();
+    final books = docs.documents.map((doc) => Book(doc['title'])).toList();
+    this.books = books;
+    notifyListeners();
   }
 }
